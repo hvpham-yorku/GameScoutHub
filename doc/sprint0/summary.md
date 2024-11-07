@@ -8,7 +8,7 @@ Our tool is aimed to change this experience of the users with limited time or th
 
 Key user persona examples: Alex, Mingwa
 
-Alex.  
+Alex:
 	Key Goals:
 * Alex needs recommendations that will match his specific needs when it comes to games.
 * Alex is looking for unconventional games where the popularity of the game is not an issue but the quality and the uniqueness is important. 
