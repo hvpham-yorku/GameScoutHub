@@ -1,81 +1,160 @@
-                                                       User Stories
+# Product Backlog
 
-1. User Profile Creation:
-As a user, I want to create a profile so that my preferences can be saved for future recommendations.
-Acceptance Criteria: User can input preferences like genre, platform, and playstyle.
+1. **User Profile Creation**
+   - **User Story**: As a user, I want to create a profile so that my preferences can be saved for future recommendations.
+   - **Acceptance Criteria**:
+     - User can create and edit a profile.
+     - User preferences are saved in the database.
+   - **Tasks**:
+     - [ ] Implement user profile setup.
+     - [ ] Add fields for gaming preferences (genre, platform, playstyle).
+     - [ ] Store profile information in the database.
 
-2. Quiz-Based Game Recommendations:
-As a user, I want to complete a gaming preference quiz so that I receive personalized game recommendations.
-Acceptance Criteria: The quiz analyzes answers and tailors game recommendations accordingly.
+2. **Quiz-Based Game Recommendations**
+   - **User Story**: As a user, I want to complete a gaming preference quiz so that I receive personalized game recommendations.
+   - **Acceptance Criteria**:
+     - User can take a quiz to set preferences.
+     - Quiz responses are analyzed and linked to recommendations.
+   - **Tasks**:
+     - [ ] Design and develop a gaming preference quiz.
+     - [ ] Create an algorithm for analyzing quiz responses.
+     - [ ] Generate personalized game recommendations based on quiz results.
 
-3. Preference-Based Notifications:
-As a user, I want to receive notifications for game sales so that I can purchase games within my interest.
-Acceptance Criteria: Notifications align with user-specified preferences and are sent during sales.
+3. **Preference-Based Notifications**
+   - **User Story**: As a user, I want to receive notifications for game sales so that I can purchase games within my interests.
+   - **Acceptance Criteria**:
+     - User receives notifications based on saved preferences.
+   - **Tasks**:
+     - [ ] Implement notifications for game sales.
+     - [ ] Integrate notifications with user preferences.
 
-4. Genre Exploration:
-As a user, I want to explore new gaming genres so that I can diversify my gaming experience.
-Acceptance Criteria: Users can filter recommendations by genre.
+4. **Wishlist Feature**
+   - **User Story**: As a user, I want to add games to a wishlist so that I can remember games I want to purchase.
+   - **Acceptance Criteria**:
+     - User can add/remove games to/from a wishlist.
+   - **Tasks**:
+     - [ ] Develop wishlist functionality.
+     - [ ] Save wishlist in the user profile.
 
-5. Gaming Community Discovery:
-As a competitive gamer, I want to connect with like-minded players so that I can enjoy games with a community.
-Acceptance Criteria: Community options appear based on user-selected genres or playstyles.
+5. **Game Filtering Options**
+   - **User Story**: As a user, I want to filter games by genre, platform, and rating so that I can find games of interest.
+   - **Acceptance Criteria**:
+     - Games are filtered by user-selected criteria.
+   - **Tasks**:
+     - [ ] Implement filter options on the game search page.
 
-6. Competitive Game Leaderboard Access:
-As a competitive gamer, I want games with reliable leaderboards so that I can track my progress.
-Acceptance Criteria: Games with robust leaderboard systems are highlighted in recommendations.
+6. **Purchase History Tracking**
+   - **User Story**: As a user, I want my purchase history to be saved so that I can review my past purchases.
+   - **Acceptance Criteria**:
+     - User can view a list of previously purchased games.
+   - **Tasks**:
+     - [ ] Set up database for purchase history.
+     - [ ] Display purchase history in user profile.
 
-7. Sales Tracking for Preferred Games:
-As a user, I want to see when games on my wishlist go on sale so that I can purchase them at a discount.
-Acceptance Criteria: Sales data is shown within the tool and linked to user wishlist.
+7. **Social Media Sharing**
+   - **User Story**: As a user, I want to share my favorite games on social media so that my friends can see my interests.
+   - **Acceptance Criteria**:
+     - Users can share games on popular social platforms.
+   - **Tasks**:
+     - [ ] Add social media sharing buttons to game pages.
 
-8. Advanced Search Filters:
-As a user, I want to filter games by features like multiplayer, offline, or mobile compatibility so that I can find games that match my preferences.
-Acceptance Criteria: Filters work accurately for different attributes.
+8. **User Review System**
+   - **User Story**: As a user, I want to leave reviews for games so that other users can read my opinions.
+   - **Acceptance Criteria**:
+     - User can add, edit, or delete reviews.
+   - **Tasks**:
+     - [ ] Build review submission and display functionality.
 
-9. Game Recommendation Updates:
-As a frequent user, I want my recommendations to update based on my activity so that I always see relevant games.
-Acceptance Criteria: Recommendations adjust over time with user actions.
+9. **Rating System**
+   - **User Story**: As a user, I want to rate games on a scale of 1-5 stars so that others can gauge the quality.
+   - **Acceptance Criteria**:
+     - Users can submit ratings for each game.
+   - **Tasks**:
+     - [ ] Add rating input and display on game pages.
 
-10. Unconventional Game Discovery:
-As a niche gamer, I want to discover unique, less-known games so that I can find games that offer new experiences.
-Acceptance Criteria: Algorithm highlights niche games that align with user interests.
+10. **Friend Recommendation System**
+    - **User Story**: As a user, I want to recommend games to friends so that we can play together.
+    - **Acceptance Criteria**:
+      - User can recommend games to friends within the app.
+    - **Tasks**:
+      - [ ] Implement game recommendation feature.
+      - [ ] Notify friends when a recommendation is received.
 
-11. Toxicity Reporting in Communities:
-As a user, I want to report toxic communities so that I can avoid negative interactions.
-Acceptance Criteria: Reporting options are accessible in community-based games.
+11. **Advanced Search**
+    - **User Story**: As a user, I want to perform advanced searches with multiple filters to find specific games.
+    - **Acceptance Criteria**:
+      - User can apply multiple filters for game searches.
+    - **Tasks**:
+      - [ ] Create advanced search interface.
+      - [ ] Integrate filters for genre, platform, price, etc.
 
-12. Personalized Leaderboards:
-As a competitive user, I want personalized leaderboards so that my skills are accurately reflected in rankings.
-Acceptance Criteria: Leaderboards update and show metrics based on user-selected metrics.
+12. **User Analytics Dashboard**
+    - **User Story**: As a user, I want to view analytics on my gameplay habits so that I can better understand my preferences.
+    - **Acceptance Criteria**:
+      - User can view personalized analytics based on playtime and genre.
+    - **Tasks**:
+      - [ ] Develop analytics calculations.
+      - [ ] Design and implement analytics dashboard.
 
-13. Game Developer Focus on Competitive Ranking:
-As a competitive gamer, I want recommendations for games with dedicated competitive modes so that I can play games with fair ranking systems.
-Acceptance Criteria: Games with strong competitive support are highlighted.
+13. **Game Comparison Feature**
+    - **User Story**: As a user, I want to compare games to see which best fits my preferences.
+    - **Acceptance Criteria**:
+      - User can select two games and view their features side by side.
+    - **Tasks**:
+      - [ ] Build comparison interface.
+      - [ ] Display attributes for comparison.
 
-14. Cross-Platform Game Suggestions:
-As a user, I want games that work across different platforms so that I can play with friends regardless of device.
-Acceptance Criteria: Cross-platform games are suggested when relevant.
+14. **In-App Messaging**
+    - **User Story**: As a user, I want to message friends within the app so that we can discuss games.
+    - **Acceptance Criteria**:
+      - User can send and receive messages from friends.
+    - **Tasks**:
+      - [ ] Implement messaging interface.
+      - [ ] Set up database for message storage.
 
-15. Sales Notification Customization:
-As a user, I want to customize my notification settings for sales so that I only receive updates for my preferred games.
-Acceptance Criteria: Users can select game genres or titles they want notifications for.
+15. **Multi-Language Support**
+    - **User Story**: As a user, I want the app in my preferred language so that I can understand it easily.
+    - **Acceptance Criteria**:
+      - User can select language from a list of options.
+    - **Tasks**:
+      - [ ] Add multi-language support.
+      - [ ] Translate UI text into supported languages.
 
-16. Game Time Filtering:
-As a user, I want to find games based on average playtime so that I can select games that fit my schedule.
-Acceptance Criteria: Recommendations show playtime range per game.
+16. **In-App Purchases**
+    - **User Story**: As a user, I want to purchase additional content within the app for more gaming features.
+    - **Acceptance Criteria**:
+      - User can browse and purchase add-ons or upgrades.
+    - **Tasks**:
+      - [ ] Develop in-app purchase interface.
+      - [ ] Integrate with payment processing.
 
-17. Seasonal Game Recommendations:
-As a user, I want seasonal game suggestions so that I can find games relevant to current trends or holidays.
-Acceptance Criteria: Seasonal trends are reflected in suggested games.
+17. **User Onboarding**
+    - **User Story**: As a user, I want an onboarding guide when I first use the app to understand its features.
+    - **Acceptance Criteria**:
+      - User is guided through core features on first use.
+    - **Tasks**:
+      - [ ] Create onboarding guide with walkthroughs.
 
-18. Community Feedback Integration:
-As a user, I want to see reviews from similar players so that I can gauge the game's suitability.
-Acceptance Criteria: Reviews appear from players with similar preferences.
+18. **Weekly Highlights and News**
+    - **User Story**: As a user, I want to see weekly highlights and news for trending games.
+    - **Acceptance Criteria**:
+      - User can view latest game news and highlights.
+    - **Tasks**:
+      - [ ] Build news feed section.
+      - [ ] Connect feed to a source for game news.
 
-19. Recommendation Feedback System:
-As a user, I want to provide feedback on recommendations so that the system can refine future suggestions.
-Acceptance Criteria: Feedback options are available for each recommendation.
+19. **Achievement Tracking**
+    - **User Story**: As a user, I want to track my gaming achievements.
+    - **Acceptance Criteria**:
+      - User can view earned achievements for each game.
+    - **Tasks**:
+      - [ ] Implement achievement tracking system.
 
-20. E-Sport Event Updates:
-As a competitive gamer, I want updates on e-sport events so that I stay informed on upcoming tournaments.
-Acceptance Criteria: Notifications include event dates, times, and links.
+20. **Leaderboard Feature**
+    - **User Story**: As a user, I want to see leaderboards for popular games so that I can compete with others.
+    - **Acceptance Criteria**:
+      - Users can view and compare leaderboard rankings.
+    - **Tasks**:
+      - [ ] Set up leaderboard displays for competitive games.
+      - [ ] Implement ranking calculation for leaderboards.
+
