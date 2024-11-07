@@ -8,8 +8,10 @@ Our tool is aimed to change this experience of the users with limited time or th
 
 Key user persona examples: Alex, Mingwa
 
+
 Alex:
 	Key Goals:
+ 
 * Alex needs recommendations that will match his specific needs when it comes to games.
 * Alex is looking for unconventional games where the popularity of the game is not an issue but the quality and the uniqueness is important. 
 * Alex needs to be able to find games without an overwhelming amount of games on his list.   
@@ -19,6 +21,7 @@ Alex:
 	
 Mingwa:  
 	Key Goals:  
+ 
 * Finding games with developers focusing on the competitive ranking system and a strong community 
 * A matchmaking system that is sophisticated enough to eliminate factors such as “smurfing” that focuses on fair matchmaking
 * Finding games with a leaderboard system that is able to divide and reflect one's abilities within a balanced metric system that is consistent.  
