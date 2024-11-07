@@ -1,4 +1,4 @@
-                                             User Stories
+                                                       User Stories
 
 1. User Profile Creation:
 As a user, I want to create a profile so that my preferences can be saved for future recommendations.
