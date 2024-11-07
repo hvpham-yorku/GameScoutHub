@@ -36,11 +36,11 @@ Recognition of toxic communities are also extremely important where this prefere
 After the result of a very unenjoyable experience of gaming, Mingwa wants to find a game within her need out of a competitive game but also does not want to change her genre of gaming which where they input all these preferences in including a large community with lower levels of toxicity. 
 
 
-Key Scenario Explanation:  
+# Key Scenario Explanation:  
 	The key scenarios touch upon frustrations and situations that could be potentially faced by our personas specifically created with the purpose of where this tool would be used and be the best choice over any other solution. This allows us to focus on the potential needs and features that our users might benefit from. For Alex, the time constraint and the poor selection algorithms used by large distribution companies are the focus. This is due to these companies prioritising not the needs of the users, but capitalist goals whether that be advertising etc. or simply the popularity of newly released games which result in a long search for a game that has a high probability of having a short gameplay time. Our tool recognizes those issues and focuses on fast delivery of recommendations. 
 	For Mingwa, her taste in games is a bit more general yet her needs in those games are very specific. Our tool is designed to be the solution to this problem by finding a game that has a large community support, and using those parameters to adapt our recommendation algorithm, aiming to decrease the time needed to find the perfect games. 
 
-Key Use Cases (generalised):
+# Key Use Cases (generalised):
 
 * Help gamers find games based on personal preference, including genre, platform, playstyle
 * Regularly update and suggest games based on users’ evolving preferences or recent game releases
