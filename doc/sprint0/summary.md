@@ -9,7 +9,7 @@ Our tool is aimed to change this experience of the users with limited time or th
 Key user persona examples: Alex, Mingwa
 
 
-Alex:
+Alex: 
 	Key Goals:
  
 * Alex needs recommendations that will match his specific needs when it comes to games.
@@ -19,7 +19,7 @@ Alex:
 * Alex is not interested in most of the new popular games that have been released, they are looking for a new game but most games that are recommended using steam’s algorithm or forums are based on the popularity of the released games. Their selection of games have also been towards the shorter side when it comes to gameplay time. As of currently, the number of new games that were released were on the lower side, within the existing database they knew they could find a game that would satisfy them but the overwhelming amount of research to be done made it impossible for Alex to find a new game. They are then recommended to a new tool that allows for faster search of games with a detailed description and explanation by the users of the tool as well. This allows them to skip all the time that could have been spent on third party forums and steam recommendations of endless lists of games that prioritise popularity and very general preference parameters over personal preferences. 
 
 	
-Mingwa:  
+Mingwa: 
 	Key Goals:  
  
 * Finding games with developers focusing on the competitive ranking system and a strong community 
