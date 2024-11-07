@@ -38,6 +38,3 @@ This Definition of Done outlines the criteria that each deliverable must meet to
 - **Team Process Description**: Details the organization of the team, decision-making methods, prioritization strategies, and meeting frequency.
 - **Learning Reflections**: Includes lessons learned and planned improvements for the next sprint.
 
-## Additional Notes
-- Any changes or updates to the DoD during the project must be documented and approved by the team.
-- This DoD applies to Sprint 0; future sprints may require revisions or additions based on project needs.
