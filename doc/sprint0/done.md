@@ -5,7 +5,7 @@ The following criteria apply to all user stories to ensure consistency and quali
 ## 1. Standard Definition of Done (DoD)
 
 - **Code Completeness**: The feature is fully coded, adhering to team or organizational coding standards.
-- **Code Review**: The code has been reviewed by at least one other team member.
+- **Code Review**: The code has been reviewed by at least one other team member through pull requests
 - **Testing**:
   - **Unit Tests**: All related unit tests pass with appropriate test coverage (e.g., 80%+).
   - **Integration Tests**: Feature has been tested in combination with other modules or components, if applicable.
@@ -15,10 +15,6 @@ The following criteria apply to all user stories to ensure consistency and quali
 - **Deployment Readiness**: The feature is ready for deployment, meaning it has no known critical bugs and is merged into the main branch.
 
 ## 2. Additional Definition of Done (DoD)
-
 - **Performance Benchmarks**: Feature meets agreed-upon performance benchmarks, such as load time, response time, or memory usage.
-- **Accessibility Compliance**: The feature adheres to accessibility standards, such as WCAG 2.1 guidelines.
-- **Localization**: The feature is prepared for localization if the project requires multiple languages.
 - **Security Checks**: Feature has passed security assessments, like vulnerability scanning or code security checks.
 - **End-to-End Testing**: End-to-end tests are run, particularly for critical or complex workflows.
-- **Stakeholder Approval**: Product owners or stakeholders have reviewed and approved the feature for release.
