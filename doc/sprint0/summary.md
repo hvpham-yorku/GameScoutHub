@@ -10,6 +10,7 @@ Key user persona examples: Alex, Mingwa
 
 
 Alex: 
+
 	Key Goals:
  
 * Alex needs recommendations that will match his specific needs when it comes to games.
