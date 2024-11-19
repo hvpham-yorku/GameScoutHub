@@ -1,13 +1,17 @@
 {
   "scripts": {
-    "setup":"concurrently \"npm run setup_client\" \"npm run setup_server\" ",
+    "setup": "concurrently \"npm run setup_client\" \"npm run setup_server\" ",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "client": "cd client && npm run dev",
     "server": "cd server && npm run dev",
-    "setup_client":"cd client && npm install",
-    "setup_server":"cd server && npm install"
-},
+    "setup_client": "cd client && npm install",
+    "setup_server": "cd server && npm install"
+  },
   "devDependencies": {
     "concurrently": "^9.1.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "mongodb": "^6.10.0"
   }
 }
