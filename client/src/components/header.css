@@ -1,0 +1,60 @@
+
+.header {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%; 
+    background-color: #1a2a44; /* colour of the background */
+    color: white; 
+    display: flex; 
+    justify-content: space-between; /* Space items evenly across the header */
+    align-items: center; /* Center items vertically */
+    padding: 10px 20px; 
+    box-sizing: border-box; 
+    z-index: 1000; /* Keep the header above other elements */
+  }
+  
+  /* Logo styling */
+  .header-logo {
+    font-size: 24px;
+    font-weight: bold;
+    font-family:'Times New Roman', Times, serif;
+  }
+  
+  /* Navigation links */
+  .header-nav {
+    display: flex;
+    gap: 20px; /* Add spacing between nav links */
+  }
+  
+  .header-nav a {
+    text-decoration: none; /* Remove underline from links */
+    color: white; /* White text */
+    font-size: 16px; /* Adjust font size */
+  }
+  
+  .header-nav a:hover {
+    text-decoration: underline; /* Add underline on hover */
+  }
+  
+  /* Icons on the right */
+  .header-icons {
+    display: flex;
+    gap: 15px; /* Add spacing between icons */
+  }
+  
+  .header-icons a {
+    color: white; /* White icon color */
+    font-size: 18px; /* Adjust icon size */
+    text-decoration: none;
+  }
+  
+  .header-icons a:hover {
+    color: #ccc; /* Change color on hover */
+  }
+  
+  /* Add space below the header for the content */
+  main {
+    margin-top: 60px; /* Adjust this value based on the header's height */
+  }
+  
