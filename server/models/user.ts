@@ -17,6 +17,8 @@ export class User {
     this.email = email;
   }
 
+  
+
   async setPassword(password: string) {
     this._hashedPassword = await this.hashPassword(password);
   }

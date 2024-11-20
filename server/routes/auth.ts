@@ -1,8 +1,7 @@
-import { Router,json } from "express";
-import { signUp,login } from "../controllers/auth";
-
+import { Router } from "express";
+import { signUp,login,logout } from "../controllers/auth";
 export const authRoutes = Router()
-authRoutes.use(json())
+
 
 
 authRoutes.get("/", async (req,res) => {
@@ -15,4 +14,8 @@ authRoutes.post("/signup", (req,res)=>{
 
 authRoutes.post("/login",(req,res) => {
     login(req,res)
+})
+
+authRoutes.post("/logout",(req,res) => {
+    logout(req,res)
 })
