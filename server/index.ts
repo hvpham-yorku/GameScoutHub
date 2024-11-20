@@ -14,7 +14,9 @@ app.use(express.urlencoded({extended: false}))
 //Initialize DB connection
 Database.getInstance()
 
+//Application Router
 app.use("/auth",authRoutes)
+
 
 app.listen(port, async () => {
   console.log(`Server is running at ${port}`);
