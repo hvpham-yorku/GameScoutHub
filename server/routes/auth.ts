@@ -1,5 +1,5 @@
 import { Router,json } from "express";
-import { signUp } from "../controllers/register";
+import { signUp,login } from "../controllers/auth";
 
 export const authRoutes = Router()
 authRoutes.use(json())
@@ -13,3 +13,6 @@ authRoutes.post("/signup", (req,res)=>{
     signUp(req,res)
 })
 
+authRoutes.post("/login",(req,res) => {
+    login(req,res)
+})

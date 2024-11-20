@@ -1,6 +1,7 @@
 import { User, UserModel } from "../models/user";
+import {Request, Response} from "express"
 
-export async function signUp(req:any,res:any){
+export async function signUp(req:Request,res:Response){
 
     try {
         //Get data from request
@@ -26,4 +27,8 @@ export async function signUp(req:any,res:any){
     }
 
   
+}
+
+export async function login(req:any,res:any){
+
 }
