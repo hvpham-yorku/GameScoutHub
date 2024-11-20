@@ -1,10 +1,15 @@
-import { db } from "./utils/db";
+import { authRoutes } from "./routes/auth";
+import {Database} from "./utils/db";
 
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 3001;
 
-app.listen(port, () => {
-  if (db == null) console.log("Error when creating db");
+//Initialize DB connection
+Database.getInstance()
+
+app.use("/auth",authRoutes)
+
+app.listen(port, async () => {
   console.log(`Server is running at ${port}`);
 });
