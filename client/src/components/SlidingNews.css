@@ -1,0 +1,42 @@
+.sliding-news-bar {
+    background-color: #0a1628; /* Background color for the bar */
+    color: white;
+    padding: 10px 20px;
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    overflow: hidden; /* Ensures only one news item is visible */
+  }
+  
+  .news-container {
+    display: flex;
+    align-items: center;
+    white-space: nowrap; /* Prevent line breaks */
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .new-tag {
+    background-color: #ff5a5f;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .news-item {
+    animation: slide-in 1s ease-in-out forwards;
+    white-space: nowrap;
+    width: 100%;
+  }
+  
+  @keyframes slide-in {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
