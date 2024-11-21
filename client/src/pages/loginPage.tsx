@@ -64,7 +64,7 @@ const LoginPage: React.FC = () => {
       if (response.status === 200) {
         alert("Login successfully");
         response.json().then((userInfo: any) => {
-          setUserInfo(userInfo);
+          setUserInfo(userInfo.token);
         });
       } else {
         alert("Invalid Credentials");

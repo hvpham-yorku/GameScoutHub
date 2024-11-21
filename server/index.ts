@@ -2,6 +2,7 @@ import cookieParser from "cookie-parser";
 import { authRoutes } from "./routes/auth";
 import {Database} from "./utils/db";
 import cors from "cors"
+import { profileRoutes } from "./routes/profile";
 
 
 const express = require("express");
@@ -24,6 +25,7 @@ Database.getInstance()
 
 //Application Router
 app.use("/auth",authRoutes)
+app.use("/profile", profileRoutes);
 
 
 app.listen(port, async () => {
