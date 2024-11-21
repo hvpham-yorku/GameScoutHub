@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Header from "./components/header"; 
+import SlidingNews from './components/newsList';
 
 function App() {
   const [count, setCount] = useState(0)
