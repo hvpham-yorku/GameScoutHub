@@ -12,11 +12,13 @@ const AboutUs = () => {
           example, a Reddit user, <span className="italic">@alanwithtea</span>,
           commented:
         </p>
-        <blockquote className="bg-gray-800 rounded-lg p-4 italic border-l-4 border-blue-500 mb-6 text-center">
+
+        <blockquote className="bg-gray-400 rounded-lg p-4 italic border-l-4 border-blue-500 mb-6 text-center">
           "Yeah, the discovery queue rarely shows me anything I'm interested in,
           for exactly that reason. I'm more interested in overlooked gems than
           big, popular hits."
         </blockquote>
+
         <p className="text-gray-800 mb-4 text-center">
           This highlights a major issue in a large community of gamers. The
           number of games that are "findable" with minimal effort is very small,
