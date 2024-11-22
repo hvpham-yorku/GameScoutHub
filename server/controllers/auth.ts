@@ -67,7 +67,7 @@ export async function login(req:Request,res:Response){
        }, process.env.LOGIN_TOKEN_SECRET as string)
 
        //Return result
-        return res.status(200).cookie("GSH_LGIN_TOKEN", loginToken).json({msg:"Login Successfully"})
+        return res.status(200).cookie("GSH_LGIN_TOKEN", loginToken).json({msg:"Login Successfully",token:loginToken})
     } catch (error) {
         console.log(error)
         return res.status(500).json({msg:"Internal Server Error"})
