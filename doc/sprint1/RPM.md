@@ -78,7 +78,7 @@ The goal of this release is to launch GameScoutHub, a user-friendly platform to 
 | 3   | As a user, I want to explore new gaming genres so that I can diversify my gaming experience.                | Genre Exploration               | 8          | 4        |
 | 4   | As a user, I want to provide feedback on recommendations so that the system can refine future suggestions.  | Recommendation Feedback System  | 3          | 5        |
 | 5   | As a user, I want to sign-in.                                                                               | User Sign-in                    | 7          | 6        |
-| 6   | As a user, I want to view the latest news on gaming.                                                        | User Sign-in                    | 7          | 6        |
+| 6   | As a user, I want to view the latest news on gaming.                                                        | Game News Exploration           | 7          | 6        |
 
 ## Outcome
 
