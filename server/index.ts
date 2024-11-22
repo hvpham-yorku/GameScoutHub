@@ -3,6 +3,7 @@ import { authRoutes } from "./routes/auth";
 import {Database} from "./utils/db";
 import cors from "cors"
 import { profileRoutes } from "./routes/profile";
+
 import { gamenewRoutes } from "./routes/gamenews";
 
 
