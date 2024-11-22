@@ -21,6 +21,41 @@
 
 ---
 
+
+## Meeting Details
+
+- **Date:** November 17th 2024
+- **Time:** 15:00
+- **Location:** Discord Voice channel
+- **Duration:** 1 hours
+- **Participants:**
+
+  | Full Name                    |
+  | ---------------------------- |
+  | Thanh Phat Lam               |
+  | (Haadi) Abdulhaadi Memisevic |
+  | Alp Sirek                    |
+
+---
+
+
+## Meeting Details
+
+- **Date:** November 21th 2024
+- **Time:** 15:00
+- **Location:** Discord Voice channel
+- **Duration:** 1 hours
+- **Participants:**
+
+  | Full Name                    |
+  | ---------------------------- |
+  | Thanh Phat Lam               |
+  | (Haadi) Abdulhaadi Memisevic |
+  | Alp Sirek                    |
+
+---
+
+
 ## Agenda
 
 1. Welcome and Objectives (10 min)
