@@ -47,7 +47,7 @@ const ListOfNews: React.FC = () => {
     <div className="max-h-screen overflow-y-auto p-6 bg-gray-50 rounded-lg shadow-lg">
       {newsList.map((game, index) => (
         <div key={index} className="mb-8">
-          <h2 className="text-xl font-bold text-gray-700 mb-4">{game.gamename}</h2>
+          <h2 className="text-3xl font-serif text-gray-800 mb-4 tracking-wide">{game.gamename}</h2>
           <div className="space-y-4">
             {game.news.map((newsItem, idx) => (
               <News
@@ -64,6 +64,7 @@ const ListOfNews: React.FC = () => {
       ))}
     </div>
   );
+  
 };
 
 export default ListOfNews;

@@ -15,6 +15,7 @@ import HowToUsePage from "./pages/HowToUse";
 
 function App() {
   return (
+
     <UserContextProvider>
       <Routes>
         <Route path="/" element={<Layout />}>
@@ -30,6 +31,7 @@ function App() {
         </Route>
       </Routes>
     </UserContextProvider>
+
   );
 }
 

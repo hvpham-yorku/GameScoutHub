@@ -10,7 +10,7 @@ interface NewsProps {
 
 const News: React.FC<NewsProps> = ({ title, author, date, url, feedlabel }) => {
   return (
-    <div className="border border-gray-300 rounded-lg p-4 bg-white shadow-sm hover:shadow-md transition-shadow duration-200">
+    <div className="border border-gray-300 rounded-lg p-4 bg-white shadow-sm hover:shadow-md transition-shadow duration-200 text-left">
       <h3 className="text-lg font-semibold text-gray-800">{title}</h3>
       <p className="text-sm text-gray-600 mt-2">
         <span className="font-medium">Author:</span> {author}
