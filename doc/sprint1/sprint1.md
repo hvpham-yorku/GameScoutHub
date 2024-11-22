@@ -28,8 +28,8 @@
 | ID  | User Story                                                                                                  | Epic                            | Estimation | Priority |
 | --- | ----------------------------------------------------------------------------------------------------------- | ------------------------------- | ---------- | -------- |
 | 1   | As a user, I want to create a profile so that my preferences can be saved for future recommendations.       | User Profile Creation           | 3          | 1        |
-| 5   | As a user, I want to sign-in.                                                                               | User Sign-In                    | 7          | 6        |
-| 6   | As a user, I want to view the latest news on gaming.                                                        | Game News Exploration           | 7          | 2        |
+| 5   | As a user, I want to sign-in.                                                                               | User Sign-In                    | 3         | 2        |
+| 6   | As a user, I want to view the latest news on gaming.                                                        | Game News Exploration           | 7          | 3        |
 
 ## Deliverables
 
@@ -46,7 +46,7 @@
 
    - **Functionality:**
      - Allow users to sign in using their registered email and password.
-     - Verify credentials and provide access to the dashboard or home screen upon successful authentication.
+     - Verify credentials and provide access to the home screen upon successful authentication.
      - Display an error message for invalid credentials.
    - **UI:**
      - Simple login form with fields for email and password.
@@ -67,72 +67,67 @@
 ### 1. User Profile Creation
 
 - **Back-End Development**
-
-  - Set up user database schema with relevant fields (e.g., user ID, email, preferences).
-  - Implement API endpoints for profile creation, retrieval, and updates.
-
+  - Set up the database schema to store user information (e.g., user ID, email, password, and preferences).
+  - Implement API endpoints for user registration, login, profile retrieval, and updates.
+  
 - **Front-End Development**
-
-  - Design and develop profile creation and editing forms.
-  - Build the user dashboard to display profile information.
-
+  - Design and develop a responsive profile creation form (with fields for email, password, preferences).
+  - Build the user dashboard to display profile details, including preferences (genres, favorite games, platforms).
+  
 - **Testing**
-  - Write unit tests for API endpoints.
-  - Conduct manual testing for the front-end.
+  - Write unit tests for the API endpoints (profile creation, login, and profile update).
+  - Conduct manual testing for the front-end forms (validation and data submission).
 
-### 2. Gaming Preference Quiz
+### 2. User Sign-In
 
 - **Back-End Development**
-
-  - Develop database structure for storing quiz questions and results.
-  - Implement API endpoints for fetching questions and saving results.
-
+  - Implement user authentication (email and password verification).
+  - Implement token-based session management for keeping users logged in.
+  
 - **Front-End Development**
-
-  - Create a responsive and intuitive quiz interface.
-  - Display results and initial recommendations.
-
+  - Create a simple login form (fields for email and password).
+  - Display an error message when invalid credentials are entered.
+  - Redirect users to the home screen upon successful authentication.
+  
 - **Testing**
-  - Validate quiz flow and data storage.
-  - Ensure accurate recommendation generation.
+  - Write unit tests for login and authentication functionality.
+  - Conduct manual testing for the sign-in process (login flow, error messages).
 
-### 3. Seasonal Gaming List
+### 3. Game News Exploration
 
 - **Back-End Development**
-
-  - Integrate with Steam API or scrape data to fetch sale games.
-  - Implement API endpoints for retrieving and filtering game sale data.
+  - Research and integrate a gaming news API (e.g., News API, Gamepedia) to fetch the latest gaming news.
+  - Implement API endpoints for retrieving news articles.
 
 - **Front-End Development**
-
-  - Develop a responsive table view to display game name, genre, and price.
-  - Add filter options for genre and price range.
-
+  - Design a visually appealing layout to display gaming news (with thumbnails, titles, and short descriptions).
+  - Implement clickable headlines that redirect to the full article on an external site.
+  
 - **Testing**
-  - Test integration with Steam API or scraping functionality.
-  - Ensure filters work correctly and the UI is responsive.
+  - Test API integration for fetching news and ensuring it returns accurate data.
+  - Conduct manual testing to ensure news articles display correctly and are clickable.
 
 ## Sprint Plan
 
-| Task                                         | Assignee             | Status  | Estimation |
-| -------------------------------------------- | -------------------- | ------- | ---------- |
-| Database schema for user profiles            | Thanh Phat Lam       | Pending | 1 day      |
-| API endpoints for profile creation           | Thanh Phat Lam       | Pending | 1 day      |
-| Profile creation form (front-end)            | Thanh Phat Lam       | Pending | 2 days     |
-| Quiz questions database setup                | Abdulhaadi Memisevic | Pending | 1 day      |
-| API for quiz functionality                   | Abdulhaadi Memisevic | Pending | 2 days     |
-| Quiz front-end interface                     | Abdulhaadi Memisevic | Pending | 3 days     |
-| Steam API integration for seasonal list      | Alp Sirek            | Pending | 2 days     |
-| API endpoints for seasonal game list         | Alp Sirek            | Pending | 2 days     |
-| Front-end development for seasonal game list | Alp Sirek            | Pending | 3 days     |
-| Testing and bug fixes                        | All                  | Pending | 2 days     |
+| Task                                          | Assignee             | Status  | Estimation |
+| --------------------------------------------- | -------------------- | ------- | ---------- |
+| Database schema for user profiles             | Thanh Phat Lam       | Pending | 1 day      |
+| API endpoints for profile creation            | Thanh Phat Lam       | Pending | 1 day      |
+| Profile creation form (front-end)             | Thanh Phat Lam       | Pending | 1 day      |
+| User authentication (sign-in functionality)   | Abdulhaadi Memisevic | Pending | 2 days     |
+| Login form (front-end)                        | Abdulhaadi Memisevic | Pending | 1 day      |
+| News API integration                          | Alp Sirek            | Pending | 2 days     |
+| API for fetching gaming news                  | Alp Sirek            | Pending | 1 day      |
+| Front-end development for news section        | Alp Sirek            | Pending | 3 days     |
+| Testing and bug fixes                         | All                  | Pending | 2 days     |
 
 ## Definition of Done
 
-1. Users can successfully create, edit, and save their profiles.
-2. The gaming preference quiz is functional, and users can view initial game recommendations after completing it.
-3. A list of seasonal games is displayed, with working filters for genre and price.
-4. All features are tested, and bugs are resolved before the sprint ends.
+1. Users can successfully create an account, log in, and edit their profile with preferences.
+2. The login system is functional, and users are redirected to the home screen after successful authentication.
+3. The latest gaming news is displayed with clickable headlines that redirect to the full articles.
+4. All features are fully tested (API, front-end, and user flows) and bugs are resolved before the sprint ends.
+
 
 ## Sprint Review and Retrospective
 
