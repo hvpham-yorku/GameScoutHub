@@ -1,13 +1,14 @@
 import React, { useContext, useState } from "react";
 import { UserContext } from "../contexts/userContext";
+import { Navigate } from "react-router";
 
 const LoginPage: React.FC = () => {
   const userContext = useContext(UserContext);
+  const [redirect, setRedirect] = useState(false);
+
   if (!userContext) {
     throw new Error("UserContext must be used within a UserContextProvider");
   }
-
-  const { setUserInfo } = userContext;
 
   const [formData, setFormData] = useState({
     email: "",
@@ -64,13 +65,17 @@ const LoginPage: React.FC = () => {
       if (response.status === 200) {
         alert("Login successfully");
         response.json().then((userInfo: any) => {
-          setUserInfo(userInfo.token);
+          userContext.setUserInfo(userInfo.token);
+          localStorage.setItem("loggedin", "1");
+          setRedirect(true);
         });
       } else {
         alert("Invalid Credentials");
       }
     }
   };
+
+  if (redirect) return <Navigate to={"/"} />;
 
   return (
     <div className="flex h-screen justify-center items-center">

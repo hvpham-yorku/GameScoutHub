@@ -5,12 +5,12 @@ interface IUserContext {
   setUserInfo: React.Dispatch<React.SetStateAction<any>>;
 }
 
-export const UserContext = createContext<IUserContext | undefined>(undefined);
+export const UserContext = createContext<IUserContext | null>(null);
 
 export const UserContextProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [userInfo, setUserInfo] = useState();
+  const [userInfo, setUserInfo] = useState(null);
 
   return (
     <UserContext.Provider value={{ userInfo, setUserInfo }}>

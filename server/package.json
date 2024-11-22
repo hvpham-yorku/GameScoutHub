@@ -5,7 +5,7 @@
   "scripts": {
     "build": "npx tsc",
     "start": "node index.js",
-    "dev": "nodemon index.ts"
+    "dev": "npm i nodemon; nodemon index.ts"
   },
   "author": "",
   "license": "ISC",
@@ -29,6 +29,7 @@
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.10.0",
     "mongoose": "^8.8.2",
+    "nodemon": "^3.1.7",
     "ts-node": "^10.9.2"
   }
 }
