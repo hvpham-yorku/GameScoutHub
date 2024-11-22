@@ -28,8 +28,8 @@
 | ID  | User Story                                                                                                  | Epic                            | Estimation | Priority |
 | --- | ----------------------------------------------------------------------------------------------------------- | ------------------------------- | ---------- | -------- |
 | 1   | As a user, I want to create a profile so that my preferences can be saved for future recommendations.       | User Profile Creation           | 3          | 1        |
-| 5   | As a user, I want seasonal game suggestions so that I can find games relevant to current trends or holidays | Seasonal Game Recommendations   | 7          | 6        |
-| 2   | As a user, I want to complete a gaming preference quiz so that I receive personalized game recommendations. | Quiz-Based Game Recommendations | 7          | 2        |
+| 5   | As a user, I want to sign-in.                                                                               | User Sign-In                    | 7          | 6        |
+| 6   | As a user, I want to view the latest news on gaming.                                                        | Game News Exploration           | 7          | 2        |
 
 ## Deliverables
 
@@ -42,22 +42,25 @@
      - Profile creation form with fields for user information.
      - User dashboard displaying profile details.
 
-2. **Gaming Preference Quiz**
+2. **User Sign-In**
 
    - **Functionality:**
-     - Interactive quiz with a series of questions about gaming habits and preferences.
-     - Store quiz results to generate initial game recommendations.
+     - Allow users to sign in using their registered email and password.
+     - Verify credentials and provide access to the dashboard or home screen upon successful authentication.
+     - Display an error message for invalid credentials.
    - **UI:**
-     - Multi-step quiz interface with progress tracking.
-     - Summary screen displaying quiz results and initial recommendations.
+     - Simple login form with fields for email and password.
+     - Button to submit the login form.
 
-3. **Seasonal Gaming List**
+3. **Game News Exploration**
+   
    - **Functionality**
-     - Display list of games that are currently on sales in steam
-     - Include filter option
+     - Display the latest gaming news from a predefined source/API.
+     - Allow users to browse through articles or headlines with titles, images, and short descriptions.
+     - Redirect users to the full article upon clicking a headline.
    - **UI**
-     - A table view that displays game name, genre and price
-     - Responsive design for both web and mobile
+     - A visually appealing page displaying a list or grid of the latest gaming news.
+     - Each news item should include a thumbnail image, title, and brief description.
 
 ## Task Breakdown
 
