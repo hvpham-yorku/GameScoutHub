@@ -96,7 +96,7 @@
 ### 3. Game News Exploration
 
 - **Back-End Development**
-  - Research and integrate a gaming news API (e.g., News API, Gamepedia) to fetch the latest gaming news.
+  - Research and integrate a gaming news API from Steam API to fetch the latest gaming news.
   - Implement API endpoints for retrieving news articles.
 
 - **Front-End Development**
