@@ -24,8 +24,7 @@ function App() {
         <Route path ={"/aboutus"} element={<AboutUs />}/>
       </Route>
 
-
-
+    </Routes>
   );
 }
 
