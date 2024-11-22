@@ -3,6 +3,7 @@ import { authRoutes } from "./routes/auth";
 import {Database} from "./utils/db";
 import cors from "cors"
 import { profileRoutes } from "./routes/profile";
+import { gamenewRoutes } from "./routes/gamenews";
 
 
 const express = require("express");
@@ -26,6 +27,7 @@ Database.getInstance()
 //Application Router
 app.use("/auth",authRoutes)
 app.use("/profile", profileRoutes);
+app.use("/news",gamenewRoutes)
 
 
 app.listen(port, async () => {
