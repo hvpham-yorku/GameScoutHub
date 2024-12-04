@@ -12,16 +12,16 @@ import ListOfNews from "./components/ListOfNews";
 import { UserContextProvider } from "./contexts/userContext";
 import ProfilePage from "./pages/profilePage";
 import HowToUsePage from "./pages/HowToUse";
+import GameExplorePage from "./pages/gameExplore";
 
 function App() {
   return (
-
     <UserContextProvider>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<IndexPage />} />
           <Route path={"/how-to-use"} element={<HowToUsePage />} />
-
+          <Route path={"/explore"} element={<GameExplorePage />} />
           <Route path={"/login"} element={<LoginPage />} />
           <Route path={"/signup"} element={<SignupPage />} />
           <Route path={"/news"} element={<ListOfNews />} />
@@ -31,7 +31,6 @@ function App() {
         </Route>
       </Routes>
     </UserContextProvider>
-
   );
 }
 
