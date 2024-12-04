@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import GameExploreTab from "../components/gameExploreTab";
-import GameExploreList from "../components/gameExploreList";
 
 const genreList = [
   "action",
@@ -32,7 +31,23 @@ interface IResponse {
 
 const GameExplorePage: React.FC = () => {
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
-  const [gameLists, setGameLists] = useState<IResponse>(null);
+  const [gameLists, setGameLists] = useState<IResponse | null>(null);
+  const [likedGames, setLikedGames] = useState<string[]>([]);
+
+  useEffect(() => {
+    const fetchLikedGames = async () => {
+      try {
+        const response = await fetch("/likedgames"); // Ensure correct endpoint
+        const data = await response.json();
+        setLikedGames(data.likedGames || []);
+        console.log("Liked games on mount:", data.likedGames); // Debug
+      } catch (error) {
+        console.error("Error fetching liked games:", error);
+      }
+    };
+  
+    fetchLikedGames();
+  }, []);
 
   const handleGenreChange = (genre: string) => {
     setSelectedGenres((prev) =>
@@ -42,9 +57,7 @@ const GameExplorePage: React.FC = () => {
 
   const handleSubmit = async () => {
     const query = selectedGenres.join(",");
-    const url = `${
-      import.meta.env.VITE_API_URL
-    }/gamelist/bygenres?genre=${query}`;
+    const url = `${import.meta.env.VITE_API_URL}/gamelist/bygenres?genre=${query}`;
 
     try {
       const response = await fetch(url);
@@ -58,6 +71,29 @@ const GameExplorePage: React.FC = () => {
       console.error("Fetch Error:", error);
     }
   };
+
+const handleLikeToggle = async (gameid: string, liked: boolean) => {
+  try {
+    const response = await fetch("/togglelike", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ gameid, saved: liked }),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to toggle like status");
+    }
+
+    // Update the liked games in the frontend
+    setLikedGames((prev) =>
+      liked ? [...prev, gameid] : prev.filter((id) => id !== gameid)
+    );
+
+    console.log("Liked games updated:", likedGames); // Debug
+  } catch (error) {
+    console.error("Error toggling like status:", error);
+  }
+};
 
   return (
     <div>
@@ -91,6 +127,7 @@ const GameExplorePage: React.FC = () => {
           </button>
         </div>
       </div>
+
       {gameLists && (
         <div className="p-6">
           {/* New Release Games */}
@@ -106,7 +143,9 @@ const GameExplorePage: React.FC = () => {
                   website={game.website}
                   header_image={game.header_image}
                   genre={game.genre}
-                  gameid={game.id}
+                  gameid={game.gameid}
+                  liked={likedGames.includes(game.gameid)} // Check if liked
+                  onLikeToggle={handleLikeToggle} // Toggle like status
                 />
               ))}
             </div>
@@ -125,9 +164,10 @@ const GameExplorePage: React.FC = () => {
                   website={game.website}
                   header_image={game.header_image}
                   genre={game.genre}
-                  gameid={game.id} liked={false} onLikeToggle={function (gameid: string, liked: boolean): void {
-                    throw new Error("Function not implemented.");
-                  } }                />
+                  gameid={game.gameid}
+                  liked={likedGames.includes(game.gameid)} // Check if liked
+                  onLikeToggle={handleLikeToggle} // Toggle like status
+                />
               ))}
             </div>
           </div>
@@ -145,7 +185,9 @@ const GameExplorePage: React.FC = () => {
                   website={game.website}
                   header_image={game.header_image}
                   genre={game.genre}
-                  gameid={game.id}
+                  gameid={game.gameid}
+                  liked={likedGames.includes(game.gameid)} // Check if liked
+                  onLikeToggle={handleLikeToggle} // Toggle like status
                 />
               ))}
             </div>
@@ -164,7 +206,9 @@ const GameExplorePage: React.FC = () => {
                   website={game.website}
                   header_image={game.header_image}
                   genre={game.genre}
-                  gameid={game.id}
+                  gameid={game.gameid}
+                  liked={likedGames.includes(game.gameid)} // Check if liked
+                  onLikeToggle={handleLikeToggle} // Toggle like status
                 />
               ))}
             </div>
