@@ -55,64 +55,60 @@ function shuffle(array: any[]): void {
  * @param res - The HTTP response object.
  */
 export default async function gameListByGenre(req: Request, res: Response) {
-  // const userQueryGenre = req.query.genre as string;
+  const userQueryGenre = req.query.genre as string;
 
-  // // Validate presence of the genre parameter
-  // if (!userQueryGenre) {
-  //   return res.status(401).json({ msg: "Missing params" });
-  // }
+  // Validate presence of the genre parameter
+  if (!userQueryGenre) {
+    return res.status(401).json({ msg: "Missing params" });
+  }
 
-  // // Parse and validate user-provided genres
-  // const userGenres = userQueryGenre
-  //   .split(",")
-  //   .map((genre) => genre.trim().toLowerCase());
+  // Parse and validate user-provided genres
+  const userGenres = userQueryGenre
+    .split(",")
+    .map((genre) => genre.trim().toLowerCase());
 
-  // const allGenresValid = userGenres.every((genre) => genreList.includes(genre));
+  const allGenresValid = userGenres.every((genre) => genreList.includes(genre));
 
-  // if (!allGenresValid) {
-  //   return res.status(400).json({ msg: "One or more genres are invalid" });
-  // }
+  if (!allGenresValid) {
+    return res.status(400).json({ msg: "One or more genres are invalid" });
+  }
 
-  // // Initialize categorized game lists
-  // const newReleaseList: IAppDetails[] = [];
-  // const topSellersList: IAppDetails[] = [];
-  // const comingSoonList: IAppDetails[] = [];
-  // const specialsList: IAppDetails[] = [];
+  // Initialize categorized game lists
+  const newReleaseList: IAppDetails[] = [];
+  const topSellersList: IAppDetails[] = [];
+  const comingSoonList: IAppDetails[] = [];
+  const specialsList: IAppDetails[] = [];
 
   try {
-    //   for (const genre of userGenres) {
-    //     // Fetch game lists by genre
-    //     const response = await axios.get(getAppsInGenreURL + genre);
-    //     const { newreleases, topsellers, comingsoon, specials } =
-    //       response.data.tabs;
-
-    //     // Fetch and process detailed game data for each category
-    //     const newReleaseItems = await fetchGameDetails(newreleases.items, genre);
-    //     const topSellerItems = await fetchGameDetails(topsellers.items, genre);
-    //     const comingSoonItems = await fetchGameDetails(comingsoon.items, genre);
-    //     const specialItems = await fetchGameDetails(specials.items, genre);
-
-    //     // Accumulate results
-    //     newReleaseList.push(...newReleaseItems);
-    //     topSellersList.push(...topSellerItems);
-    //     comingSoonList.push(...comingSoonItems);
-    //     specialsList.push(...specialItems);
-    //   }
-
-    //   // Shuffle lists for randomness
-    //   shuffle(newReleaseList);
-    //   shuffle(topSellersList);
-    //   shuffle(comingSoonList);
-    //   shuffle(specialsList);
-
-    // Respond with the categorized game lists
-    // return res.status(200).json({
-    //   newrelease: newReleaseList.slice(0, 5),
-    //   topseller: topSellersList.slice(0, 5),
-    //   comingsoon: comingSoonList.slice(0, 5),
-    //   specials: specialsList.slice(0, 5),
-    // });
-    return res.status(200).json(sampleData);
+      for (const genre of userGenres) {
+        // Fetch game lists by genre
+        const response = await axios.get(getAppsInGenreURL + genre);
+        const { newreleases, topsellers, comingsoon, specials } =
+          response.data.tabs;
+        // Fetch and process detailed game data for each category
+        const newReleaseItems = await fetchGameDetails(newreleases.items, genre);
+        const topSellerItems = await fetchGameDetails(topsellers.items, genre);
+        const comingSoonItems = await fetchGameDetails(comingsoon.items, genre);
+        const specialItems = await fetchGameDetails(specials.items, genre);
+        // Accumulate results
+        newReleaseList.push(...newReleaseItems);
+        topSellersList.push(...topSellerItems);
+        comingSoonList.push(...comingSoonItems);
+        specialsList.push(...specialItems);
+      }
+      // Shuffle lists for randomness
+      shuffle(newReleaseList);
+      shuffle(topSellersList);
+      shuffle(comingSoonList);
+      shuffle(specialsList);
+      //Respond with the categorized game lists
+      return res.status(200).json({
+        newrelease: newReleaseList.slice(0, 5),
+        topseller: topSellersList.slice(0, 5),
+        comingsoon: comingSoonList.slice(0, 5),
+        specials: specialsList.slice(0, 5),
+      });
+    // return res.status(200).json(sampleData);
   } catch (error) {
     console.error("Error fetching game details:", error);
     return res.status(500).json({ msg: "Internal server error" });
@@ -136,6 +132,7 @@ async function fetchGameDetails(
         const response = await axios.get(getAppDetailsURL + appid);
         const { name, website, header_image } = response.data[`${appid}`].data;
         return {
+          gameid: appid,
           name,
           website: `https://store.steampowered.com/app/${appid}`,
           header_image,
@@ -152,27 +149,7 @@ async function fetchGameDetails(
 const sampleData = {
   newrelease: [
     {
-      name: "Diesel Legacy: The Brazen Age",
-      website: "https://store.steampowered.com/app/1959140",
-      header_image:
-        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1959140/header.jpg?t=1733246549",
-      genre: "action",
-    },
-    {
-      name: "Savage Arena: Dead Ball Zone",
-      website: "https://store.steampowered.com/app/3319570",
-      header_image:
-        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3319570/header.jpg?t=1733255254",
-      genre: "action",
-    },
-    {
-      name: "ANTONBLAST",
-      website: "https://store.steampowered.com/app/1887400",
-      header_image:
-        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1887400/header.jpg?t=1733253671",
-      genre: "action",
-    },
-    {
+      gameid: 3091830,
       name: "Space Duck: Escape",
       website: "https://store.steampowered.com/app/3091830",
       header_image:
@@ -180,27 +157,31 @@ const sampleData = {
       genre: "action",
     },
     {
-      name: "Mr. Pogo",
-      website: "https://store.steampowered.com/app/2272800",
+      gameid: 3017910,
+      name: "Arrowscapades",
+      website: "https://store.steampowered.com/app/3017910",
       header_image:
-        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2272800/header.jpg?t=1733224438",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3017910/header.jpg?t=1733288787",
       genre: "action",
     },
     {
-      name: "Labernum",
-      website: "https://store.steampowered.com/app/3295670",
+      gameid: 3331640,
+      name: "Tank Frenzy Survivor",
+      website: "https://store.steampowered.com/app/3331640",
       header_image:
-        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3295670/header.jpg?t=1733235738",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3331640/header.jpg?t=1733255333",
       genre: "action",
     },
     {
-      name: "Void Phantom",
-      website: "https://store.steampowered.com/app/3266180",
+      gameid: 3281190,
+      name: "They Yearn For The Mines",
+      website: "https://store.steampowered.com/app/3281190",
       header_image:
-        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3266180/header.jpg?t=1733263094",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3281190/header.jpg?t=1733299850",
       genre: "action",
     },
     {
+      gameid: 3328230,
       name: "Lyra Convolution",
       website: "https://store.steampowered.com/app/3328230",
       header_image:
@@ -210,13 +191,7 @@ const sampleData = {
   ],
   topseller: [
     {
-      name: "Red Dead Redemption 2",
-      website: "https://store.steampowered.com/app/1174180",
-      header_image:
-        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1174180/header.jpg?t=1720558643",
-      genre: "action",
-    },
-    {
+      gameid: 32470,
       name: "STAR WARS™ Empire at War - Gold Pack",
       website: "https://store.steampowered.com/app/32470",
       header_image:
@@ -224,136 +199,15 @@ const sampleData = {
       genre: "action",
     },
     {
-      name: "Warhammer 40,000: Space Marine 2",
-      website: "https://store.steampowered.com/app/2183900",
+      gameid: 990080,
+      name: "Hogwarts Legacy",
+      website: "https://store.steampowered.com/app/990080",
       header_image:
-        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2183900/header.jpg?t=1732028471",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/990080/header.jpg?t=1717689083",
       genre: "action",
     },
     {
-      name: "HELLDIVERS™ 2",
-      website: "https://store.steampowered.com/app/553850",
-      header_image:
-        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/553850/header.jpg?t=1730884635",
-      genre: "action",
-    },
-    {
-      name: "Cyberpunk 2077",
-      website: "https://store.steampowered.com/app/1091500",
-      header_image:
-        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/header.jpg?t=1730212296",
-      genre: "action",
-    },
-    {
-      name: "Path of Exile 2",
-      website: "https://store.steampowered.com/app/2694490",
-      header_image:
-        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2694490/header.jpg?t=1733089229",
-      genre: "action",
-    },
-    {
-      name: "Path of Exile 2",
-      website: "https://store.steampowered.com/app/2694490",
-      header_image:
-        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2694490/header.jpg?t=1733089229",
-      genre: "action",
-    },
-    {
-      name: "Ghost of Tsushima DIRECTOR'S CUT",
-      website: "https://store.steampowered.com/app/2215430",
-      header_image:
-        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2215430/header.jpg?t=1717622497",
-      genre: "action",
-    },
-  ],
-  comingsoon: [
-    {
-      name: "Dungeon Hero",
-      website: "https://store.steampowered.com/app/3354050",
-      header_image:
-        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3354050/header.jpg?t=1732113940",
-      genre: "action",
-    },
-    {
-      name: "Entropy Survivors",
-      website: "https://store.steampowered.com/app/2602030",
-      header_image:
-        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2602030/header.jpg?t=1733171962",
-      genre: "action",
-    },
-    {
-      name: "Voyagers of Nera Multiplayer Demo",
-      website: "https://store.steampowered.com/app/3368490",
-      header_image:
-        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3368490/header.jpg?t=1732598675",
-      genre: "action",
-    },
-    {
-      name: "Outlaws vs Aliens",
-      website: "https://store.steampowered.com/app/3362780",
-      header_image:
-        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3362780/header.jpg?t=1732440684",
-      genre: "action",
-    },
-    {
-      name: "Deeper Than Hell",
-      website: "https://store.steampowered.com/app/2842010",
-      header_image:
-        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2842010/header.jpg?t=1732737509",
-      genre: "action",
-    },
-    {
-      name: "Ghosts Attack",
-      website: "https://store.steampowered.com/app/3355120",
-      header_image:
-        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3355120/header.jpg?t=1732132810",
-      genre: "action",
-    },
-    {
-      name: "Rogue Blight Demo",
-      website: "https://store.steampowered.com/app/2336830",
-      header_image:
-        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2336830/header.jpg?t=1733071381",
-      genre: "action",
-    },
-    {
-      name: "Unknown Tapes",
-      website: "https://store.steampowered.com/app/2785200",
-      header_image:
-        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2785200/header.jpg?t=1733002318",
-      genre: "action",
-    },
-  ],
-  specials: [
-    {
-      name: "Marvel’s Spider-Man Remastered",
-      website: "https://store.steampowered.com/app/1817070",
-      header_image:
-        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1817070/header.jpg?t=1725652915",
-      genre: "action",
-    },
-    {
-      name: "Warhammer 40,000: Space Marine 2",
-      website: "https://store.steampowered.com/app/2183900",
-      header_image:
-        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2183900/header.jpg?t=1732028471",
-      genre: "action",
-    },
-    {
-      name: "Sekiro™: Shadows Die Twice - GOTY Edition",
-      website: "https://store.steampowered.com/app/814380",
-      header_image:
-        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/814380/header.jpg?t=1726158438",
-      genre: "action",
-    },
-    {
-      name: "God of War",
-      website: "https://store.steampowered.com/app/1593500",
-      header_image:
-        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1593500/header.jpg?t=1729030762",
-      genre: "action",
-    },
-    {
+      gameid: 2215430,
       name: "Ghost of Tsushima DIRECTOR'S CUT",
       website: "https://store.steampowered.com/app/2215430",
       header_image:
@@ -361,13 +215,7 @@ const sampleData = {
       genre: "action",
     },
     {
-      name: "Cyberpunk 2077",
-      website: "https://store.steampowered.com/app/1091500",
-      header_image:
-        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/header.jpg?t=1730212296",
-      genre: "action",
-    },
-    {
+      gameid: 1174180,
       name: "Red Dead Redemption 2",
       website: "https://store.steampowered.com/app/1174180",
       header_image:
@@ -375,10 +223,95 @@ const sampleData = {
       genre: "action",
     },
     {
-      name: "Hogwarts Legacy",
-      website: "https://store.steampowered.com/app/990080",
+      gameid: 2933620,
+      name: "Call of Duty®: Black Ops 6",
+      website: "https://store.steampowered.com/app/2933620",
       header_image:
-        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/990080/header.jpg?t=1717689083",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2933620/header.jpg?t=1731604753",
+      genre: "action",
+    },
+  ],
+  comingsoon: [
+    {
+      gameid: 2506810,
+      name: "Pest Apocalypse",
+      website: "https://store.steampowered.com/app/2506810",
+      header_image:
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2506810/header.jpg?t=1733156626",
+      genre: "action",
+    },
+    {
+      gameid: 2785200,
+      name: "Unknown Tapes",
+      website: "https://store.steampowered.com/app/2785200",
+      header_image:
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2785200/header.jpg?t=1733002318",
+      genre: "action",
+    },
+    {
+      gameid: 2602030,
+      name: "Entropy Survivors",
+      website: "https://store.steampowered.com/app/2602030",
+      header_image:
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2602030/header.jpg?t=1733171962",
+      genre: "action",
+    },
+    {
+      gameid: 3325260,
+      name: "TANK ZERO",
+      website: "https://store.steampowered.com/app/3325260",
+      header_image:
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3325260/header.jpg?t=1731721668",
+      genre: "action",
+    },
+    {
+      gameid: 2842010,
+      name: "Deeper Than Hell",
+      website: "https://store.steampowered.com/app/2842010",
+      header_image:
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2842010/header.jpg?t=1732737509",
+      genre: "action",
+    },
+  ],
+  specials: [
+    {
+      gameid: 553850,
+      name: "HELLDIVERS™ 2",
+      website: "https://store.steampowered.com/app/553850",
+      header_image:
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/553850/header.jpg?t=1730884635",
+      genre: "action",
+    },
+    {
+      gameid: 1593500,
+      name: "God of War",
+      website: "https://store.steampowered.com/app/1593500",
+      header_image:
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1593500/header.jpg?t=1729030762",
+      genre: "action",
+    },
+    {
+      gameid: 1174180,
+      name: "Red Dead Redemption 2",
+      website: "https://store.steampowered.com/app/1174180",
+      header_image:
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1174180/header.jpg?t=1720558643",
+      genre: "action",
+    },
+    {
+      gameid: 1091500,
+      name: "Cyberpunk 2077",
+      website: "https://store.steampowered.com/app/1091500",
+      header_image:
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/header.jpg?t=1730212296",
+      genre: "action",
+    },
+    {
+      gameid: 814380,
+      name: "Sekiro™: Shadows Die Twice - GOTY Edition",
+      website: "https://store.steampowered.com/app/814380",
+      header_image:
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/814380/header.jpg?t=1726158438",
       genre: "action",
     },
   ],

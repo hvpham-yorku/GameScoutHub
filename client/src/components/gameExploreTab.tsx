@@ -1,5 +1,5 @@
-import React from "react";
-import HeartButton from "./gameExploreLikeButton";
+import { useState } from "react";
+import axios from "axios";
 
 interface gameExploreProps {
   name: string;
@@ -8,25 +8,54 @@ interface gameExploreProps {
   genre: string;
 }
 
-const GameExploreTab = (props: { name; website; header_image; genre }) => {
+const GameExploreTab = (props: {
+  name;
+  website;
+  header_image;
+  genre;
+  gameid;
+}) => {
+  const [liked, setLiked] = useState<boolean>(false);
+
+  const handleClick = async () => {
+    console.log(props.gameid);
+    setLiked(!liked);
+    const response: any = await fetch(
+      `${import.meta.env.VITE_API_URL}/gamelist/save`,
+      {
+        method: "POST",
+        body: JSON.stringify({ gameid: props.gameid, saved: !liked }),
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+      }
+    ).then((response) => response.json());
+    console.log(response.record);
+  };
   return (
     <div className="border border-gray-300 rounded-lg p-4 bg-white shadow-sm hover:shadow-md transition-shadow duration-200 text-left">
       <div className="flex">
         <h3 className="text-lg font-semibold text-gray-800">{props.name}</h3>
-        {/* <HeartButton /> */}
       </div>
       <p className="text-sm text-gray-600 mt-2">
         <span className="font-medium">Genre:</span> {props.genre}
       </p>
 
-      <a
-        href={props.website}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-blue-600 hover:underline text-sm mt-4 block"
-      >
-        Explore it now
-      </a>
+      <div className=" flex">
+        <a
+          href={props.website}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-600 hover:underline text-sm mt-4 block flex-1"
+        >
+          Explore it now
+        </a>
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+          onClick={handleClick}
+        >
+          {!liked ? "Like" : "Liked"}
+        </button>
+      </div>
     </div>
   );
 };
