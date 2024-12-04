@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { UserContext } from "../contexts/userContext";
-import { Navigate } from "react-router";
+import { Navigate, useNavigate } from "react-router";
 
 const LoginPage: React.FC = () => {
   const userContext = useContext(UserContext);
@@ -65,8 +65,8 @@ const LoginPage: React.FC = () => {
       if (response.status === 200) {
         alert("Login successfully");
         response.json().then((userInfo: any) => {
-          userContext.setUserInfo(userInfo.token);
-          localStorage.setItem("loggedin", "1");
+          userContext.setUserInfo(userInfo);
+          sessionStorage.setItem("userToken", userInfo.token);
           setRedirect(true);
         });
       } else {
@@ -75,7 +75,9 @@ const LoginPage: React.FC = () => {
     }
   };
 
-  if (redirect) return <Navigate to={"/"} />;
+  if (redirect) {
+    return <Navigate to={"/"} />;
+  }
 
   return (
     <div className="flex h-screen justify-center items-center">
