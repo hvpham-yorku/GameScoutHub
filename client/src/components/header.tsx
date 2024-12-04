@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import "./Header.css";
 import { UserContext } from "../contexts/userContext";
@@ -6,10 +6,15 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 const Header: React.FC = () => {
+  const [loginToken, setloginToken] = useState(null);
   const userContext = useContext(UserContext);
 
   useEffect(() => {
     async function getProfile() {
+      const storedToken = sessionStorage.getItem("userToken");
+      if (storedToken !== loginToken) {
+        setloginToken(storedToken);
+      }
       const userDoc = await fetch(`${import.meta.env.VITE_API_URL}/profile`, {
         credentials: "include",
       }).then((response) => response.json());
@@ -18,14 +23,15 @@ const Header: React.FC = () => {
     getProfile();
   });
 
-  function logout() {
+  async function logout() {
     axios.post(
       `${import.meta.env.VITE_API_URL}/auth/logout`,
       {},
       { withCredentials: true }
     );
     userContext?.setUserInfo(null);
-    localStorage.removeItem("loggedin");
+    sessionStorage.clear();
+    setloginToken(null);
   }
 
   return (
@@ -39,7 +45,7 @@ const Header: React.FC = () => {
       </nav>
 
       <div className="header-icons">
-        {userContext?.userInfo && (
+        {loginToken && (
           <>
             <Link to="/profile" className="">
               Go to profile
@@ -49,7 +55,7 @@ const Header: React.FC = () => {
             </Link>
           </>
         )}
-        {!userContext?.userInfo && (
+        {!loginToken && (
           <>
             <Link to="/login" className="">
               Login
