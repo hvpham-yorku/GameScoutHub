@@ -105,7 +105,7 @@ const GameExplorePage: React.FC = () => {
                   website={game.website}
                   header_image={game.header_image}
                   genre={game.genre}
-                  gameid={game.id}
+                  gameid={game.gameid}
                 />
               ))}
             </div>
@@ -124,7 +124,7 @@ const GameExplorePage: React.FC = () => {
                   website={game.website}
                   header_image={game.header_image}
                   genre={game.genre}
-                  gameid={game.id}
+                  gameid={game.gameid}
                 />
               ))}
             </div>
@@ -143,7 +143,7 @@ const GameExplorePage: React.FC = () => {
                   website={game.website}
                   header_image={game.header_image}
                   genre={game.genre}
-                  gameid={game.id}
+                  gameid={game.gameid}
                 />
               ))}
             </div>
@@ -162,7 +162,7 @@ const GameExplorePage: React.FC = () => {
                   website={game.website}
                   header_image={game.header_image}
                   genre={game.genre}
-                  gameid={game.id}
+                  gameid={game.gameid}
                 />
               ))}
             </div>

@@ -55,60 +55,60 @@ function shuffle(array: any[]): void {
  * @param res - The HTTP response object.
  */
 export default async function gameListByGenre(req: Request, res: Response) {
-  // const userQueryGenre = req.query.genre as string;
+  const userQueryGenre = req.query.genre as string;
 
-  // // Validate presence of the genre parameter
-  // if (!userQueryGenre) {
-  //   return res.status(401).json({ msg: "Missing params" });
-  // }
+  // Validate presence of the genre parameter
+  if (!userQueryGenre) {
+    return res.status(401).json({ msg: "Missing params" });
+  }
 
-  // // Parse and validate user-provided genres
-  // const userGenres = userQueryGenre
-  //   .split(",")
-  //   .map((genre) => genre.trim().toLowerCase());
+  // Parse and validate user-provided genres
+  const userGenres = userQueryGenre
+    .split(",")
+    .map((genre) => genre.trim().toLowerCase());
 
-  // const allGenresValid = userGenres.every((genre) => genreList.includes(genre));
+  const allGenresValid = userGenres.every((genre) => genreList.includes(genre));
 
-  // if (!allGenresValid) {
-  //   return res.status(400).json({ msg: "One or more genres are invalid" });
-  // }
+  if (!allGenresValid) {
+    return res.status(400).json({ msg: "One or more genres are invalid" });
+  }
 
-  // // Initialize categorized game lists
-  // const newReleaseList: IAppDetails[] = [];
-  // const topSellersList: IAppDetails[] = [];
-  // const comingSoonList: IAppDetails[] = [];
-  // const specialsList: IAppDetails[] = [];
+  // Initialize categorized game lists
+  const newReleaseList: IAppDetails[] = [];
+  const topSellersList: IAppDetails[] = [];
+  const comingSoonList: IAppDetails[] = [];
+  const specialsList: IAppDetails[] = [];
 
   try {
-    //   for (const genre of userGenres) {
-    //     // Fetch game lists by genre
-    //     const response = await axios.get(getAppsInGenreURL + genre);
-    //     const { newreleases, topsellers, comingsoon, specials } =
-    //       response.data.tabs;
-    //     // Fetch and process detailed game data for each category
-    //     const newReleaseItems = await fetchGameDetails(newreleases.items, genre);
-    //     const topSellerItems = await fetchGameDetails(topsellers.items, genre);
-    //     const comingSoonItems = await fetchGameDetails(comingsoon.items, genre);
-    //     const specialItems = await fetchGameDetails(specials.items, genre);
-    //     // Accumulate results
-    //     newReleaseList.push(...newReleaseItems);
-    //     topSellersList.push(...topSellerItems);
-    //     comingSoonList.push(...comingSoonItems);
-    //     specialsList.push(...specialItems);
-    //   }
-    //   // Shuffle lists for randomness
-    //   shuffle(newReleaseList);
-    //   shuffle(topSellersList);
-    //   shuffle(comingSoonList);
-    //   shuffle(specialsList);
-    //   //Respond with the categorized game lists
-    //   return res.status(200).json({
-    //     newrelease: newReleaseList.slice(0, 5),
-    //     topseller: topSellersList.slice(0, 5),
-    //     comingsoon: comingSoonList.slice(0, 5),
-    //     specials: specialsList.slice(0, 5),
-    //   });
-    return res.status(200).json(sampleData);
+      for (const genre of userGenres) {
+        // Fetch game lists by genre
+        const response = await axios.get(getAppsInGenreURL + genre);
+        const { newreleases, topsellers, comingsoon, specials } =
+          response.data.tabs;
+        // Fetch and process detailed game data for each category
+        const newReleaseItems = await fetchGameDetails(newreleases.items, genre);
+        const topSellerItems = await fetchGameDetails(topsellers.items, genre);
+        const comingSoonItems = await fetchGameDetails(comingsoon.items, genre);
+        const specialItems = await fetchGameDetails(specials.items, genre);
+        // Accumulate results
+        newReleaseList.push(...newReleaseItems);
+        topSellersList.push(...topSellerItems);
+        comingSoonList.push(...comingSoonItems);
+        specialsList.push(...specialItems);
+      }
+      // Shuffle lists for randomness
+      shuffle(newReleaseList);
+      shuffle(topSellersList);
+      shuffle(comingSoonList);
+      shuffle(specialsList);
+      //Respond with the categorized game lists
+      return res.status(200).json({
+        newrelease: newReleaseList.slice(0, 5),
+        topseller: topSellersList.slice(0, 5),
+        comingsoon: comingSoonList.slice(0, 5),
+        specials: specialsList.slice(0, 5),
+      });
+    // return res.status(200).json(sampleData);
   } catch (error) {
     console.error("Error fetching game details:", error);
     return res.status(500).json({ msg: "Internal server error" });

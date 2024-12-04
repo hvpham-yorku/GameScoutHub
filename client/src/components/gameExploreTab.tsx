@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 
 interface gameExploreProps {
   name: string;
@@ -16,14 +17,19 @@ const GameExploreTab = (props: {
 }) => {
   const [liked, setLiked] = useState<boolean>(false);
 
-  const handleClick = () => {
-    console.log(props.name);
+  const handleClick = async () => {
+    console.log(props.gameid);
     setLiked(!liked);
-    if (!liked) {
-      console.log("Liked!"); // Action when liked
-    } else {
-      console.log("Unliked!"); // Action when unliked
-    }
+    const response: any = await fetch(
+      `${import.meta.env.VITE_API_URL}/gamelist/save`,
+      {
+        method: "POST",
+        body: JSON.stringify({ gameid: props.gameid, saved: !liked }),
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+      }
+    ).then((response) => response.json());
+    console.log(response.record);
   };
   return (
     <div className="border border-gray-300 rounded-lg p-4 bg-white shadow-sm hover:shadow-md transition-shadow duration-200 text-left">
@@ -43,8 +49,11 @@ const GameExploreTab = (props: {
         >
           Explore it now
         </a>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-          {!props.liked ? "Like" : "Liked"}
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+          onClick={handleClick}
+        >
+          {!liked ? "Like" : "Liked"}
         </button>
       </div>
     </div>
