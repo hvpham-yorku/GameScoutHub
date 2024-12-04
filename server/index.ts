@@ -1,35 +1,30 @@
 import cookieParser from "cookie-parser";
 import { authRoutes } from "./routes/auth";
-import {Database} from "./utils/db";
-import cors from "cors"
+import { Database } from "./utils/db";
+import cors from "cors";
 import { profileRoutes } from "./routes/profile";
 
 import { gamenewRoutes } from "./routes/gamenews";
-
+import { gameListRoutes } from "./routes/gameList";
 
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 3001;
 
 //Configure headers
-app.use(cookieParser())
-app.use(express.json())
-app.use(express.urlencoded({extended: false}))
-app.use(cors(
-  
-  {credentials:true,
-    origin:"http://localhost:5173"
-  }
-))
+app.use(cookieParser());
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cors({ credentials: true, origin: "http://localhost:5173" }));
 
 //Initialize DB connection
-Database.getInstance()
+Database.getInstance();
 
 //Application Router
-app.use("/auth",authRoutes)
+app.use("/auth", authRoutes);
 app.use("/profile", profileRoutes);
-app.use("/news",gamenewRoutes)
-
+app.use("/news", gamenewRoutes);
+app.use("/gameList", gameListRoutes);
 
 app.listen(port, async () => {
   console.log(`Server is running at ${port}`);
