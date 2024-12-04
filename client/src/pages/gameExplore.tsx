@@ -15,6 +15,7 @@ const genreList = [
 ];
 
 interface gameExploreProps {
+  gameid: string;
   name: string;
   website: string;
   header_image: string;
@@ -104,6 +105,7 @@ const GameExplorePage: React.FC = () => {
                   website={game.website}
                   header_image={game.header_image}
                   genre={game.genre}
+                  gameid={game.id}
                 />
               ))}
             </div>
@@ -122,6 +124,7 @@ const GameExplorePage: React.FC = () => {
                   website={game.website}
                   header_image={game.header_image}
                   genre={game.genre}
+                  gameid={game.id}
                 />
               ))}
             </div>
@@ -140,6 +143,7 @@ const GameExplorePage: React.FC = () => {
                   website={game.website}
                   header_image={game.header_image}
                   genre={game.genre}
+                  gameid={game.id}
                 />
               ))}
             </div>
@@ -158,6 +162,7 @@ const GameExplorePage: React.FC = () => {
                   website={game.website}
                   header_image={game.header_image}
                   genre={game.genre}
+                  gameid={game.id}
                 />
               ))}
             </div>

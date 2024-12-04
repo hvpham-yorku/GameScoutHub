@@ -1,5 +1,4 @@
-import React from "react";
-import HeartButton from "./HeartButton";
+import { useState } from "react";
 
 interface gameExploreProps {
   name: string;
@@ -8,7 +7,24 @@ interface gameExploreProps {
   genre: string;
 }
 
-const GameExploreTab = (props: { name; website; header_image; genre }) => {
+const GameExploreTab = (props: {
+  name;
+  website;
+  header_image;
+  genre;
+  gameid;
+}) => {
+  const [liked, setLiked] = useState<boolean>(false);
+
+  const handleClick = () => {
+    console.log(props.name);
+    setLiked(!liked);
+    if (!liked) {
+      console.log("Liked!"); // Action when liked
+    } else {
+      console.log("Unliked!"); // Action when unliked
+    }
+  };
   return (
     <div className="border border-gray-300 rounded-lg p-4 bg-white shadow-sm hover:shadow-md transition-shadow duration-200 text-left">
       <div className="flex">
@@ -23,11 +39,13 @@ const GameExploreTab = (props: { name; website; header_image; genre }) => {
           href={props.website}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-600 hover:underline text-sm mt-4 block"
+          className="text-blue-600 hover:underline text-sm mt-4 block flex-1"
         >
           Explore it now
         </a>
-        <HeartButton />
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+          {!props.liked ? "Like" : "Liked"}
+        </button>
       </div>
     </div>
   );
