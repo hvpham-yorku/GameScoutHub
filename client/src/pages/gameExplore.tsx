@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import GameExploreTab from "../components/gameExploreTab";
 import GameExploreList from "../components/gameExploreList";
+
 const genreList = [
   "action",
   "adventure",
@@ -124,8 +125,9 @@ const GameExplorePage: React.FC = () => {
                   website={game.website}
                   header_image={game.header_image}
                   genre={game.genre}
-                  gameid={game.id}
-                />
+                  gameid={game.id} liked={false} onLikeToggle={function (gameid: string, liked: boolean): void {
+                    throw new Error("Function not implemented.");
+                  } }                />
               ))}
             </div>
           </div>
