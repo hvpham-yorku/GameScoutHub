@@ -47,8 +47,8 @@ const Header: React.FC = () => {
       <div className="header-icons">
         {loginToken && (
           <>
-            <Link to="/profile" className="">
-              Go to profile
+            <Link to="/explore" className="">
+              Explore new game
             </Link>
             <Link to="/" onClick={logout} className="">
               Sign out
