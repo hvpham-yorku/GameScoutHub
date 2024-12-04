@@ -36,7 +36,11 @@ const Header: React.FC = () => {
 
   return (
     <header className="header">
-      <div className="header-logo">GameScoutHub</div>
+      <div className="header-logo">
+        <Link to="/" className="text-white hover:underline">
+          GameScoutHub
+        </Link>
+      </div>
       <nav className="header-nav">
         <a href="/how-to-use">How to Use</a>
         <a href="/news">Newsstand</a>
